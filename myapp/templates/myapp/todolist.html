@@ -1,0 +1,103 @@
+{% extends "myapp/base.html" %}
+
+{% block title %}To-Do List{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>📝 My To-Do List</h1>
+
+    <!-- Add Task Form -->
+    <form method="POST">
+        {% csrf_token %}
+        <input type="text" name="task" placeholder="Enter a new task..." required>
+        <button type="submit">Add</button>
+    </form>
+
+    <!-- Task List -->
+    <ul>
+        {% for task in tasks %}
+            <li>
+                {{ task.name }}
+                <a href="{% url 'delete_task' task.id %}">❌</a>
+            </li>
+        {% empty %}
+            <li>No tasks yet.</li>
+        {% endfor %}
+    </ul>
+</div>
+
+<!-- Design CSS (can also put in base.html or static CSS file) -->
+<style>
+    .container {
+        width: 400px;
+        margin: 30px auto;
+        background-color: white;
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+        text-align: center;
+        color: #333;
+    }
+
+    form {
+        display: flex;
+        margin-bottom: 20px;
+    }
+
+    input[type="text"] {
+        flex: 1;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 6px 0 0 6px;
+        font-size: 16px;
+    }
+
+    button {
+        padding: 10px 20px;
+        border: none;
+        background-color: #4CAF50;
+        color: white;
+        font-weight: bold;
+        border-radius: 0 6px 6px 0;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    button:hover {
+        background-color: #45a049;
+    }
+
+    ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    li {
+        padding: 12px;
+        background-color: #f9f9f9;
+        border: 1px solid #ddd;
+        margin-bottom: 8px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-radius: 6px;
+    }
+
+    li a {
+        color: #e74c3c;
+        text-decoration: none;
+        font-weight: bold;
+        padding: 4px 8px;
+        border-radius: 4px;
+        transition: 0.3s;
+    }
+
+    li a:hover {
+        background-color: #c0392b;
+        color: white;
+    }
+</style>
+{% endblock %}

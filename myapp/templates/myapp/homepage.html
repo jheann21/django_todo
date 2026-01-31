@@ -1,0 +1,73 @@
+{% extends "myapp/base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<div class="homepage-container">
+    <h1>Hello Jeann!</h1>
+    <p>Welcome to your personal Django To-Do List application.</p>
+    
+    <div class="links">
+        <a class="btn" href="{% url 'todolist' %}">Go to My To-Do List</a>
+        <a class="btn" href="{% url 'about' %}">About</a>
+        <a class="btn" href="{% url 'contact' %}">Contact</a>
+    </div>
+    
+    <section class="documentation">
+        <h2>How to Use the To-Do List</h2>
+        <ol>
+            <li>Click "Go to My To-Do List" in the navbar or button above.</li>
+            <li>Enter a task in the input box and click "Add Task".</li>
+            <li>View your tasks below the form.</li>
+            <li>Click the ❌ button next to a task to delete it.</li>
+            <li>All tasks are saved automatically in the database.</li>
+        </ol>
+    </section>
+</div>
+
+<style>
+.homepage-container {
+    max-width: 700px;
+    margin: 30px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.links {
+    margin: 20px 0;
+}
+
+.links .btn {
+    display: inline-block;
+    text-decoration: none;
+    padding: 10px 18px;
+    margin: 5px;
+    border-radius: 6px;
+    background-color: #4CAF50;
+    color: white;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.links .btn:hover {
+    background-color: #45a049;
+}
+
+.documentation {
+    text-align: left;
+    margin-top: 30px;
+}
+
+.documentation h2 {
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.documentation ol li {
+    margin: 8px 0;
+}
+</style>
+{% endblock %}
