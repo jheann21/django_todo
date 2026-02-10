@@ -7,6 +7,3 @@ https://drive.google.com/file/d/1IOmhozOcHlC0JSdblV2lqFiKoZr3cegL/view?usp=shari
 
 # Activity 3
 https://drive.google.com/file/d/1XJT45aynR-TMhckQqhKG_aQUWyZgMaYY/view?usp=sharing
-
-
-
