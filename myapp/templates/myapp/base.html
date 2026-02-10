@@ -1,48 +1,111 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
 <head>
     <title>{% block title %}My Website{% endblock %}</title>
     <style>
-        body { font-family: Arial, sans-serif; margin: 0; padding: 0; }
+        /* Global body styling */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f6f8;
+            color: #333;
+        }
 
         /* Navbar styling */
         .navbar {
             display: flex;
-            justify-content: space-between; /* left & right separation */
+            justify-content: space-between;
             align-items: center;
-            background-color: #333;
-            padding: 10px 20px;
+            background: linear-gradient(90deg, #ff69b4, #ff85c1);
+            padding: 12px 30px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            flex-wrap: wrap; /* allow wrapping on smaller screens */
         }
 
-        /* Left and right sections */
         .navbar .left, .navbar .right {
             display: flex;
             align-items: center;
+            flex-wrap: wrap;
         }
 
-        /* Links styling */
+        /* Navbar links */
         .navbar a {
-            color: white;
+            color: #fff;
             text-decoration: none;
-            padding: 10px 15px;
-            margin: 0 5px;
-            border-radius: 4px;
-            transition: 0.3s;
+            padding: 8px 16px;
+            margin: 4px 6px;
+            border-radius: 6px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.3s ease;
         }
 
         .navbar a:hover {
-            background-color: #4CAF50;
+            background-color: #ff1493;
+            transform: scale(1.05);
         }
 
-        /* Active link */
         .navbar a.active {
-            background-color: #4CAF50;
+            background-color: #ff69b4;
             font-weight: bold;
         }
 
-        /* Content styling */
+        /* Hamburger button for small screens */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 4px;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: white;
+            border-radius: 2px;
+        }
+
+        /* Collapsible menu for mobile */
+        .navbar-collapsible {
+            display: flex;
+            flex-direction: row;
+            gap: 10px;
+        }
+
+        /* Main content */
         .content {
-            padding: 20px;
+            padding: 40px 30px;
+            max-width: 1000px;
+            margin: 30px auto 50px;
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 12px 20px;
+            }
+            .hamburger {
+                display: flex;
+            }
+            .navbar-collapsible {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                margin-top: 10px;
+            }
+            .navbar-collapsible a {
+                margin: 6px 0;
+                width: 100%;
+            }
         }
     </style>
 </head>
@@ -50,16 +113,23 @@
 
     <!-- Navbar -->
     <div class="navbar">
-        <!-- Left side: Todolist -->
         <div class="left">
-            <a href="{% url 'todolist' %}" class="{% if request.path == '/todolist/' %}active{% endif %}">📋 Todolist</a>
+            <a href="{% url 'todolist' %}" class="{% if request.path == '/todolist/' %}active{% endif %}">
+                📝 Todolist
+            </a>
         </div>
 
-        <!-- Right side: Home, About, Contact -->
         <div class="right">
-            <a href="{% url 'homepage' %}" class="{% if request.path == '/' %}active{% endif %}">🏠 Home</a>
-            <a href="{% url 'about' %}" class="{% if request.path == '/about/' %}active{% endif %}">ℹ️ About</a>
-            <a href="{% url 'contact' %}" class="{% if request.path == '/contact/' %}active{% endif %}">📞 Contact</a>
+            <div class="hamburger" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <div class="navbar-collapsible">
+                <a href="{% url 'homepage' %}" class="{% if request.path == '/' %}active{% endif %}">🏡 Home</a>
+                <a href="{% url 'about' %}" class="{% if request.path == '/about/' %}active{% endif %}">💡 About</a>
+                <a href="{% url 'contact' %}" class="{% if request.path == '/contact/' %}active{% endif %}">✉️ Contact</a>
+            </div>
         </div>
     </div>
 
@@ -69,6 +139,11 @@
         {% endblock %}
     </div>
 
+    <script>
+        function toggleMenu() {
+            const menu = document.querySelector('.navbar-collapsible');
+            menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
+        }
+    </script>
 </body>
 </html>
- 

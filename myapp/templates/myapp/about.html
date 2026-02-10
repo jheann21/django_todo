@@ -3,7 +3,121 @@
 {% block title %}About{% endblock %}
 
 {% block content %}
-<h1>About Us</h1>
-<p>Welcome to the About page! This is where you can tell visitors about your website or yourself.</p>
+<div class="about-container">
+    <h1>About Our Todo List App</h1>
+    
+    <section class="about-section">
+        <h2>Introduction</h2>
+        <p>Our Todo List app helps users manage tasks efficiently. Whether you’re a student, professional, or just want to organize your day, our app keeps your tasks in one place and reminds you what’s important.</p>
+    </section>
+
+    <section class="about-section">
+        <h2>Our Mission</h2>
+        <p>To simplify task management for everyone. We aim to provide a clean, easy-to-use interface that helps users stay productive and organized.</p>
+    </section>
+
+    <section class="about-section">
+        <h2>Features & Vision</h2>
+        <p>We envision a productivity tool that adapts to your lifestyle. Features include creating, editing, and marking tasks as complete, notifications for reminders, and an intuitive design to make task management stress-free.</p>
+    </section>
+
+    <section class="about-section">
+        <h2>Meet the Team</h2>
+        <div class="team-grid">
+            <div class="team-member">JD<br>Founder & Developer</div>
+            <div class="team-member">JS<br>Frontend Developer</div>
+            <div class="team-member">MK<br>UI/UX Designer</div>
+            <div class="team-member">AL<br>Project Manager</div>
+        </div>
+    </section>
+</div>
+
+<style>
+/* Container */
+.about-container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+    font-family: 'Roboto', sans-serif;
+}
+
+/* Heading */
+.about-container h1 {
+    text-align: center;
+    font-size: clamp(2rem, 5vw, 2.5rem);
+    margin-bottom: 30px;
+    color: #1a1a1a;
+}
+
+/* Section Styling */
+.about-section {
+    background: #f9f9f9;
+    border-radius: 15px;
+    padding: clamp(15px, 2vw, 30px);
+    margin-bottom: 30px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.about-section:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 28px rgba(0,0,0,0.1);
+}
+
+.about-section h2 {
+    font-size: clamp(1.5rem, 3vw, 1.8rem);
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.about-section p {
+    font-size: clamp(0.9rem, 1.8vw, 1.1rem);
+    line-height: 1.6;
+    color: #555;
+}
+
+/* Team Grid */
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.team-member {
+    background: #2196F3;
+    color: #fff;
+    padding: clamp(15px, 2vw, 25px);
+    border-radius: 10px;
+    text-align: center;
+    font-size: clamp(0.9rem, 1.5vw, 1rem);
+}
+
+/* Responsive Adjustments */
+@media screen and (max-width: 1024px) {
+    .about-container {
+        padding: 0 15px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .team-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .team-grid {
+        grid-template-columns: 1fr;
+    }
+    .about-container h1 {
+        font-size: 1.8rem;
+    }
+    .about-section h2 {
+        font-size: 1.3rem;
+    }
+    .about-section p {
+        font-size: 0.95rem;
+    }
+}
+</style>
 {% endblock %}
-        

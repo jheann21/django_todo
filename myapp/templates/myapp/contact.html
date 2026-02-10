@@ -5,45 +5,58 @@
 {% block content %}
 <div class="contact-container">
     <h1>Contact Us</h1>
-    <p>If you have any questions, feel free to reach out!</p>
+    <p>We’d love to hear from you! Send us a message and we’ll get back to you as soon as possible.</p>
 
     <!-- Contact Form -->
     <form class="contact-form">
-        <label for="name">Name:</label>
+        <label for="name">👤 Name:</label>
         <input type="text" id="name" name="name" placeholder="Your name" required>
 
-        <label for="email">Email:</label>
+        <label for="email">📧 Email:</label>
         <input type="email" id="email" name="email" placeholder="Your email" required>
 
-        <label for="message">Message:</label>
+        <label for="message">💬 Message:</label>
         <textarea id="message" name="message" rows="5" placeholder="Your message" required></textarea>
 
-        <input type="submit" value="Send">
+        <input type="submit" value="Send Message">
     </form>
+
+    <!-- Optional Contact Info -->
+    <div class="contact-info">
+        <div class="info-item">📍 Address: Donghoy st., Cantubod, Danao, Bohol</div>
+        <div class="info-item">📞 Phone: +63 946 338 1518</div>
+        <div class="info-item">✉️ Email: jheannlapore@gmail.com</div>
+    </div>
 </div>
 
 <style>
+/* Container */
 .contact-container {
-    max-width: 600px;
-    margin: 30px auto;
-    background-color: #fff;
-    padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    max-width: 700px;
+    margin: 50px auto;
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+    padding: 40px 30px;
+    font-family: 'Roboto', sans-serif;
+    transition: all 0.3s ease;
 }
 
 .contact-container h1 {
     text-align: center;
-    color: #333;
+    font-size: clamp(2rem, 5vw, 2.5rem);
     margin-bottom: 10px;
+    color: #333;
 }
 
 .contact-container p {
     text-align: center;
     color: #555;
     margin-bottom: 30px;
+    font-size: clamp(1rem, 2.5vw, 1.1rem);
 }
 
+/* Form Styling */
 .contact-form {
     display: flex;
     flex-direction: column;
@@ -51,17 +64,18 @@
 
 .contact-form label {
     margin-bottom: 6px;
-    font-weight: bold;
+    font-weight: 600;
     color: #333;
+    font-size: clamp(0.9rem, 2vw, 1rem);
 }
 
 .contact-form input[type="text"],
 .contact-form input[type="email"],
 .contact-form textarea {
-    padding: 10px;
+    padding: 12px 15px;
     margin-bottom: 20px;
     border: 1px solid #ccc;
-    border-radius: 6px;
+    border-radius: 10px;
     font-size: 16px;
     resize: vertical;
     transition: 0.3s;
@@ -70,23 +84,64 @@
 .contact-form input[type="text"]:focus,
 .contact-form input[type="email"]:focus,
 .contact-form textarea:focus {
-    border-color: #4CAF50;
+    border-color: #ff69b4;
+    box-shadow: 0 0 8px rgba(255,105,180,0.3);
     outline: none;
 }
 
 .contact-form input[type="submit"] {
-    padding: 12px 20px;
+    padding: 14px 20px;
     border: none;
-    background-color: #4CAF50;
-    color: white;
+    background: linear-gradient(90deg, #ff69b4, #ff85c1);
+    color: #fff;
     font-weight: bold;
-    border-radius: 6px;
+    font-size: 1rem;
+    border-radius: 8px;
     cursor: pointer;
     transition: 0.3s;
 }
 
 .contact-form input[type="submit"]:hover {
-    background-color: #45a049;
+    background: linear-gradient(90deg, #ff1493, #ff69b4);
+    transform: scale(1.03);
+}
+
+/* Contact Info */
+.contact-info {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-size: clamp(0.9rem, 2vw, 1rem);
+    color: #555;
+}
+
+.info-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .contact-container {
+        padding: 30px 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .contact-container {
+        padding: 20px 15px;
+    }
+
+    .contact-container h1 {
+        font-size: 1.8rem;
+    }
+
+    .contact-form input[type="submit"] {
+        font-size: 0.95rem;
+        padding: 12px 15px;
+    }
 }
 </style>
 {% endblock %}
